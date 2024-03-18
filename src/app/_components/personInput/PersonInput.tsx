@@ -1,6 +1,8 @@
+'use client';
+
 import { useState } from 'react';
 import Input from '../input/Input';
-import styled from './personinput.module.css';
+import styled from './person.input.module.css';
 
 const PersonInput = () => {
   const [value, setValue] = useState('');

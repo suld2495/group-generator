@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Input from '../input/Input';
 import styled from './group.input.module.css';
