@@ -4,12 +4,18 @@ type Props = {
   value: string;
   placeholder?: string;    
   onChange: React.ChangeEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
 }
 
-const Input = ({ value, onChange, placeholder = '' }: Props) => {
+const Input = ({ value, onChange, onKeyDown, placeholder = '' }: Props) => {
   return (
     <div className={styled.input}>
-      <input value={value} placeholder={placeholder} onChange={onChange} />
+      <input 
+        value={value} 
+        placeholder={placeholder} 
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+      />
     </div>
   )
 };
