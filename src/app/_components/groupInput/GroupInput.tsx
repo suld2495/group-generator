@@ -23,12 +23,16 @@ const GroupInput = () => {
 
   return (
     <div className={styled['group-input']}>
-     <div className={styled['group-input_label']}>
-      그룹 추가
-     </div>
-     <div className={styled['group-input_input']}>
-      <Input value={value} onChange={handleChange} />
-      <Button onClick={handleAdd}>추가</Button>
+      <div className={styled['group-input_label']}>
+        그룹 추가
+      </div>
+      <div className={styled['group-input_input']}>
+        <Input 
+          value={value} 
+          onChange={handleChange}
+          onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+        />
+        <Button onClick={handleAdd}>추가</Button>
      </div>
     </div>
   )

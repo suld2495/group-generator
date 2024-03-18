@@ -23,13 +23,17 @@ const PersonInput = () => {
 
   return (
     <div className={styled['person-input']}>
-     <div className={styled['person-input_label']}>
-      인원 추가
-     </div>
-     <div className={styled['person-input_input']}>
-      <Input value={value} onChange={handleChange} />
-      <Button onClick={handleAdd}>추가</Button>
-     </div>
+      <div className={styled['person-input_label']}>
+        인원 추가
+      </div>
+      <div className={styled['person-input_input']}>
+        <Input 
+          value={value} 
+          onChange={handleChange}
+          onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+        />
+        <Button onClick={handleAdd}>추가</Button>
+      </div>
     </div>
   )
 };
