@@ -1,3 +1,10 @@
-.group-input {
-    
+.group-input_label {
+  font-size: var(--normal-font-size);    
+  color: var(--font-color);
+  margin-bottom: 5px;
+}
+
+.group-input_input {
+  display: flex;
+  gap: 5px;
 }

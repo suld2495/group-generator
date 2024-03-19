@@ -1,0 +1,9 @@
+:root {
+  --full-width: 1200px;
+
+  --font-color: #525252;
+  --normal-font-size: 14px;
+
+  --border-color: #ccc;
+  --hover-border-color: #868686;
+}
