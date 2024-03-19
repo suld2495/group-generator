@@ -1,0 +1,14 @@
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.buttons_group-button button {
+  background: #79bbff;
+  color: #fff;
+}
+
+.buttons_group-button button:hover {
+  background: #bee0ff;
+}

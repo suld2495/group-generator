@@ -1,0 +1,14 @@
+.main {
+  padding-top: 30px;
+}
+
+.main_input-container {
+  display: flex;
+  gap: 20px;
+}
+
+.main_list {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
