@@ -1,4 +1,8 @@
-.display {
+.result {
+  margin-top: 10px;
+}
+
+.result_display {
   flex: 1;
   height: 300px;
   border: 1px solid var(--border-color);
