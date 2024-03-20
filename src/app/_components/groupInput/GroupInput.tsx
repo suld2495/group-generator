@@ -17,7 +17,13 @@ const GroupInput = () => {
   const handleAdd = () => {
     if (!value) return alert('이름을 입력해주세요');
     
-    addGroup(value);
+    const result = addGroup(value);
+
+    if (!result) {
+      alert('이미 존재하는 그룹입니다.');
+      return;
+    }
+
     setValue('');
   }
 

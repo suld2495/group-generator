@@ -1,7 +1,13 @@
-.group-list {
+.result {
+  margin-top: 10px;
+}
+
+.result_display {
   flex: 1;
   height: 300px;
   border: 1px solid var(--border-color);
   padding: 10px;
   box-sizing: border-box;
+  color: var(--font-color);
+  overflow: auto;
 }

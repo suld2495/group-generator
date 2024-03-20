@@ -17,7 +17,13 @@ const PersonInput = () => {
   const handleAdd = () => {
     if (!value) return alert('이름을 입력해주세요');
 
-    addPerson(value);
+    const result = addPerson(value);
+
+    if (!result) {
+      alert('이미 존재하는 이름입니다.');
+      return;
+    }
+
     setValue('');
   }
 
