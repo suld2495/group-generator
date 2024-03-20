@@ -2,6 +2,7 @@ import DisplayList from "./_components/displayList/DisplayList";
 import GroupInput from "./_components/groupInput/GroupInput";
 import MainButtons from "./_components/mainbuttons/MainButtons";
 import PersonInput from "./_components/personInput/PersonInput";
+import Result from "./_components/result/Result";
 import styled from "./page.module.css";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </div>
       <DisplayList />
       <MainButtons />
+      <Result />
     </main>
   );
 }
