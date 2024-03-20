@@ -1,7 +1,0 @@
-.group-list {
-  flex: 1;
-  height: 300px;
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  box-sizing: border-box;
-}
