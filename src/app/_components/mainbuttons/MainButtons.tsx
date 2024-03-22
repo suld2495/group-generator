@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { group } from "@/app/_lib/group";
 
 const MainButtons = () => {
-  const { isReady, save, groups, persons } = useGeneratorStore();
+  const { isReady, save, reset, groups, persons } = useGeneratorStore();
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
@@ -18,6 +18,10 @@ const MainButtons = () => {
     save(group({ groups: [...groups], persons: [...persons] }));
   };
 
+  const handleReset = () => {
+    reset();
+  };
+
   return (
     <div className={styled['buttons']}>
       <Button 
@@ -25,7 +29,7 @@ const MainButtons = () => {
         onClick={handleClick} 
         disabled={disabled}
       >그룹화</Button>
-      <Button onClick={() => {}}>취소</Button>
+      <Button onClick={handleReset}>취소</Button>
     </div>
   )
 };
