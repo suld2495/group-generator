@@ -5,12 +5,12 @@ import Display from "../display/Display";
 import styled from './display.list.module.css';
 
 const DisplayList = () => {
-  const { persons, groups } = useGeneratorStore();
+  const { persons, groups, deletePerson, deleteGroup } = useGeneratorStore();
 
   return (
     <div className={styled['display-list']}>
-      <Display data={persons} />
-      <Display data={groups} />
+      <Display className={styled['display-list_person']} data={persons} close={deletePerson} />
+      <Display data={groups} close={deleteGroup} />
     </div>
   )
 };

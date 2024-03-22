@@ -3,3 +3,15 @@
   display: flex;
   gap: 20px;  
 }
+
+.display-list_person {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.display-list_person div {
+  display: inline-flex;
+  padding: 10px;
+}
