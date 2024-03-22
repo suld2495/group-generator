@@ -7,3 +7,16 @@
   color: var(--font-color);
   overflow: auto;
 }
+
+.close {
+  display: inline-flex;
+  padding-top: 2px;
+  padding-inline: 4px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #666666;
+}

@@ -8,6 +8,8 @@ type GeneratorState = {
   result: string[];
   addPerson: (name: string) => boolean;
   addGroup: (name: string) => boolean;
+  deletePerson: (index: number) => void;
+  deleteGroup: (index: number) => void;
   isReady: () => boolean;
   save: (result: string[]) => void;
   reset: () => void;
@@ -29,6 +31,10 @@ const useGeneratorStore = create<GeneratorState>()(
         return true;
       },
 
+      deletePerson: (index) => (
+        set((state) => ({ persons: state.persons.toSpliced(index, 1) }))
+      ),
+
       addGroup: (name) => {
         const result = get().groups.includes(name);
 
@@ -37,6 +43,10 @@ const useGeneratorStore = create<GeneratorState>()(
         set((state) => ({ groups: [...state.groups, name] }))
         return true;
       },
+
+      deleteGroup: (index) => (
+        set((state) => ({ groups: state.groups.toSpliced(index, 1) }))
+      ),
 
       isReady: () => !!Math.min(get().persons.length, get().groups.length),
 
