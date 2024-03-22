@@ -29,7 +29,7 @@ const MainButtons = () => {
         onClick={handleClick} 
         disabled={disabled}
       >그룹화</Button>
-      <Button onClick={handleReset}>취소</Button>
+      <Button onClick={handleReset}>초기화</Button>
     </div>
   )
 };
