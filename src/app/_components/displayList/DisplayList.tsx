@@ -10,7 +10,7 @@ const DisplayList = () => {
   return (
     <div className={styled['display-list']}>
       <Display className={styled['display-list_person']} data={persons} close={deletePerson} />
-      <Display data={groups} close={deleteGroup} />
+      <Display data={groups.map(({ count, name }) => `${name} - ${count}명`)} close={deleteGroup} />
     </div>
   )
 };

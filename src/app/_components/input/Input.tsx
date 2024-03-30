@@ -1,7 +1,7 @@
 import styled from './input.module.css';
 
 type Props = {
-  value: string;
+  value: string | number;
   placeholder?: string;    
   onChange: React.ChangeEventHandler;
   onKeyDown?: React.KeyboardEventHandler;

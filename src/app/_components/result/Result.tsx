@@ -6,14 +6,14 @@ import styled from './result.module.css';
 const Result = () => {
   const { result } = useGeneratorStore();
 
-  if (!result.length) return;
+  if (!Object.keys(result).length) return;
 
   return (
     <div className={styled.result}>
       <div className={styled['result_label']}>결과</div>
       <div className={styled['result_display']}>
-        {result.map((result) => (
-          <div key={result}>{result}</div>
+        {Object.entries(result).map(([key, value]) => (
+          <div key={key}>{`[${key}] : ${value.join(', ')}`}</div>
         ))}
       </div>
     </div>

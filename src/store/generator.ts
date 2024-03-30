@@ -2,16 +2,25 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import type { } from '@redux-devtools/extension';
 
+export type Group = {
+  name: string;
+  count: number;
+}
+
+interface Result {
+  [k: string]: string[];
+}
+
 type GeneratorState = {
   persons: string[];
-  groups: string[];
-  result: string[];
+  groups: Group[];
+  result: Result;
   addPerson: (name: string) => boolean;
-  addGroup: (name: string) => boolean;
+  addGroup: (group: Group) => boolean;
   deletePerson: (index: number) => void;
   deleteGroup: (index: number) => void;
   isReady: () => boolean;
-  save: (result: string[]) => void;
+  save: (result: Result) => void;
   reset: () => void;
 };
 
@@ -20,7 +29,7 @@ const useGeneratorStore = create<GeneratorState>()(
     (set, get) => ({
       persons: [],
       groups: [],
-      result: [],
+      result: {},
 
       addPerson: (name) => {
         const result = get().persons.includes(name);
@@ -35,12 +44,12 @@ const useGeneratorStore = create<GeneratorState>()(
         set((state) => ({ persons: state.persons.toSpliced(index, 1) }))
       ),
 
-      addGroup: (name) => {
-        const result = get().groups.includes(name);
+      addGroup: (group) => {
+        const result = get().groups.includes(group);
 
         if (result) return false;
 
-        set((state) => ({ groups: [...state.groups, name] }))
+        set((state) => ({ groups: [...state.groups, group] }))
         return true;
       },
 
@@ -52,7 +61,7 @@ const useGeneratorStore = create<GeneratorState>()(
 
       save: (result) => set({ result }),
 
-      reset: () => set({ persons: [], groups: [], result: [] }),
+      reset: () => set({ persons: [], groups: [], result: {} }),
     }),
     {
       name: "generator-storage",
