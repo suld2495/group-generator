@@ -7,24 +7,33 @@ import Button from '../button/Button';
 import useGeneratorStore from '@/store/generator';
 
 const GroupInput = () => {
-  const [value, setValue] = useState('');
+  const [name, setName] = useState('');
+  const [count, setCount] = useState(0);
   const { addGroup } = useGeneratorStore();
   
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
+    setName(e.target.value);
   };
 
+  const handleChangeCount: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = e.target.value.replace(/[^\d]/g, '');
+
+    setCount(Number(value));
+  }
+
   const handleAdd = () => {
-    if (!value) return alert('이름을 입력해주세요');
-    
-    const result = addGroup(value);
+    if (!name) return alert('이름을 입력해주세요');
+    if (!count) return alert('인원을 입력해주세요');
+
+    const result = addGroup({ name, count });
 
     if (!result) {
       alert('이미 존재하는 그룹입니다.');
       return;
     }
 
-    setValue('');
+    setName('');
+    setCount(0);
   }
 
   return (
@@ -34,8 +43,13 @@ const GroupInput = () => {
       </div>
       <div className={styled['group-input_input']}>
         <Input 
-          value={value} 
+          value={name} 
           onChange={handleChange}
+          onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+        />
+        <Input 
+          value={count} 
+          onChange={handleChangeCount}
           onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
         />
         <Button onClick={handleAdd}>추가</Button>

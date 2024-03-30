@@ -1,6 +1,8 @@
+import { Group } from "@/store/generator";
+
 type GroupProps = {
   persons: string[];
-  groups: string[];
+  groups: Group[];
 }
 
 const shuffleArray = (array: string[]) => {
@@ -12,25 +14,20 @@ const shuffleArray = (array: string[]) => {
 
 export const group = (props: GroupProps) => {
   const { persons, groups } = props;
-  const result: string[] = [];
-  const groupCount = Math.ceil(persons.length / groups.length);
-  let index = 0;
+  const result: { [key: string]: string[] } = {};
 
   shuffleArray(persons);
 
-  for (let i = 0; i < groupCount; i++) {
-    for (let j = 0; j < groups.length; j++) {
+  let index = 0;
+  for (let j = 0; j < groups.length; j++) {
+    const count = groups[j].count || Math.ceil(persons.length / groups.length);
+    result[groups[j].name] = [];
+    for (let i = 0; i < count; i++) {
       if (index === persons.length) break;
-      result.push(`${persons[index]}: ${groups[j]}`);
+      result[groups[j].name].push(persons[index]);
       index++;
     }
   }
 
-  return result.toSorted((a, b) => {
-    const [personA, groupA] = a.split(':').map(str => str.trim());
-    const [personB, groupB] = b.split(':').map(str => str.trim());
-
-    const groupComparison = groupA.localeCompare(groupB);
-    return groupComparison !== 0 ? groupComparison : personA.localeCompare(personB);
-  });
-};;
+  return result;
+}
