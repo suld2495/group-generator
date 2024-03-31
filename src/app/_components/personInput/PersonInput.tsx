@@ -6,9 +6,12 @@ import styled from './person.input.module.css';
 import Button from '../button/Button';
 import useGeneratorStore from '@/store/generator';
 
-const PersonInput = () => {
+type Props = {
+  onAdd: (value: string) => boolean;
+};
+
+const PersonInput = ({ onAdd }: Props) => {
   const [value, setValue] = useState('');
-  const { addPerson } = useGeneratorStore();
   
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -17,7 +20,7 @@ const PersonInput = () => {
   const handleAdd = () => {
     if (!value) return alert('이름을 입력해주세요');
 
-    const result = addPerson(value);
+    const result = onAdd(value);
 
     if (!result) {
       alert('이미 존재하는 이름입니다.');
