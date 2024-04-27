@@ -1,0 +1,12 @@
+.register-cotainer {
+  border-bottom: 1px solid #d0d0d0;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+.register-cotainer_input {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}

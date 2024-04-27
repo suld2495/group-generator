@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Input from '../input/Input';
 import styled from './person.input.module.css';
 import Button from '../button/Button';
-import useGeneratorStore from '@/store/generator';
 
 type Props = {
   onAdd: (value: string) => boolean;
