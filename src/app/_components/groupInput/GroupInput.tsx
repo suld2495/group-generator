@@ -4,12 +4,15 @@ import { useState } from 'react';
 import Input from '../input/Input';
 import styled from './group.input.module.css';
 import Button from '../button/Button';
-import useGeneratorStore from '@/store/generator';
+import { Group } from '@/store/generator';
 
-const GroupInput = () => {
+type Props = {
+  onAdd: (props: Group) => boolean;
+};
+
+const GroupInput = ({ onAdd }: Props) => {
   const [name, setName] = useState('');
   const [count, setCount] = useState(0);
-  const { addGroup } = useGeneratorStore();
   
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setName(e.target.value);
@@ -25,7 +28,7 @@ const GroupInput = () => {
     if (!name) return alert('이름을 입력해주세요');
     if (!count) return alert('인원을 입력해주세요');
 
-    const result = addGroup({ name, count });
+    const result = onAdd({ name, count });
 
     if (!result) {
       alert('이미 존재하는 그룹입니다.');
