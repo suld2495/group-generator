@@ -27,13 +27,13 @@ const assignUser = ({ user, persons, groups }: GroupProps) => {
 
   user
     .filter(({ name, group: { name: userGroup } }) => (
-      persons.includes(name)) &&
+      name.every((name) => persons.includes(name)) &&
       groups.some(({ name }) => name === userGroup)
-    )
+    ))
     .forEach(({ name, group }) => {
       result[group.name] = result[group.name] || [];
-      result[group.name].push(name);
-      persons.splice(persons.indexOf(name), 1);
+      result[group.name].push(...name);
+      name.forEach((name) => persons.splice(persons.indexOf(name), 1));
     });
 
   return result;

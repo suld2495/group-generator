@@ -4,7 +4,7 @@ import { Group } from "./generator";
 import { User } from "@/app/_lib/group";
 
 export type GroupUser = {
-  name: User;
+  name: User[];
   group: Group;
 }
 
