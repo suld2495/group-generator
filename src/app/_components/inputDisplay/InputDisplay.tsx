@@ -6,12 +6,12 @@ import GroupInput from "../groupInput/GroupInput";
 import styled from './input.display.module.css';
 
 const InputDisplay = () => {
-  const { addPerson } = useGeneratorStore();
+  const { addPerson, addGroup } = useGeneratorStore();
 
   return (
     <div className={styled['input-container']}>
       <PersonInput onAdd={addPerson} />
-      <GroupInput />
+      <GroupInput onAdd={addGroup} />
     </div>
   )
 }
