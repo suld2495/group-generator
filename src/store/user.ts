@@ -10,13 +10,18 @@ export type GroupUser = {
 
 type UserState = {
   required: GroupUser[];
+  clear: () => void;
 };
 
 const useUserStore = create<UserState>()(
   devtools(
     persist(
-      (_set, _get) => ({
+      (set, _get) => ({
         required: [],
+
+        clear() {
+          set(() => ({ required: [] }));
+        }
       }),
       {
         name: "user",

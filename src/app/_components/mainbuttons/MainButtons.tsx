@@ -8,7 +8,7 @@ import { group } from "@/app/_lib/group";
 import useUserStore from "@/store/user";
 
 const MainButtons = () => {
-  const { required } = useUserStore();
+  const { required, clear } = useUserStore();
   const { isReady, save, reset, groups, persons } = useGeneratorStore();
   const [disabled, setDisabled] = useState(false);
 
@@ -17,7 +17,10 @@ const MainButtons = () => {
   }, [groups, persons, isReady]);
 
   const handleClick = () => {
-    save(group({ groups: [...groups], persons: [...persons], user: required }));
+    save(group(
+      { groups: [...groups], persons: [...persons], user: required }, 
+      () => clear()
+    ));
   };
 
   const handleReset = () => {

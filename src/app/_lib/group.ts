@@ -39,7 +39,7 @@ const assignUser = ({ user, persons, groups }: GroupProps) => {
   return result;
 }
 
-export const group = (props: GroupProps) => {
+export const group = (props: GroupProps, callback?: () => void) => {
   const { persons, groups } = props;
   const result: Result = assignUser(props);
 
@@ -58,5 +58,6 @@ export const group = (props: GroupProps) => {
   }
 
   Object.values(result).forEach((result) => result.sort());
+  callback?.();
   return result;
 }
