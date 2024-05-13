@@ -8,6 +8,10 @@ const Move = () => {
   const VISIT_BEFORE = typeof window !== "undefined" ? localStorage.getItem("visit_before") : null;
 
   useEffect(() => {
+    localStorage.setItem("visit_before", "1")
+  }, []);
+
+  useEffect(() => {
     if (VISIT_BEFORE === null) {
       setPopup(false);
     } else {
