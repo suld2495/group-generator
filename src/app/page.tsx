@@ -5,6 +5,7 @@ import styled from "./page.module.css";
 import InputDisplay from "./_components/inputDisplay/InputDisplay";
 import Register from "./_components/register/Register";
 import Link from "next/link";
+import Move from "./move/page";
 
 export default function Home() {
   
@@ -16,7 +17,7 @@ export default function Home() {
       <DisplayList />
       <MainButtons />
       <Result />
-      <Link href="/test">테스트</Link>
+      <Move />
     </main>
   );
 }
